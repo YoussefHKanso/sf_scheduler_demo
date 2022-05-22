@@ -7,81 +7,21 @@
     <title>Salesforce Scheduler</title>
 </head>
 <body>
-    <script src="https://youhktech.force.com/appointments/lightning.out.js"></script>;
+<script
+src="https://youhktechec.force.com/appointments/lightning/lightning.out.js"></script>
 <script>
-$Lightning.use("runtime_appointmentbooking:lightningOutGuest", // name of the Lightning app
-function() {
+$Lightning.use("runtime_appointmentbooking:lightningOutGuest",
+function() { // Callback once framework and app load
 $Lightning.createComponent(
 "lightning:flow", // top-level component of your app
 { }, // attributes to set on the component when created
-"lightningLocator", // the DOM location to insert the component
-function(cmp) {
-console.log("Hi from callback");// callback when component is created and active on the page
-cmp.startFlow("Inbound_New_Guest_Appointment_hardcoded_Location");
+"lexcontainer", // the DOM location to insert the component
+function(component) { // API name of the Flow
+component.startFlow(”Inbound_New_Guest_Appointment_Hardcoded_Location”);
 }
 );
-}, "https://youhktech.force.com/appointments/s" // Community endpoint
+}, 'https://youhktechec.force.com/appointments' // Site endpoint
 );
-</script>
-
-<div id="lightningLocator">
-<p>Lightning Component mentioned in the Script is invoked from here</p>
-</div>
-    <style type='text/css'>
-	.embeddedServiceHelpButton .helpButton .uiButton {
-		background-color: #005290;
-		font-family: "Arial", sans-serif;
-	}
-	.embeddedServiceHelpButton .helpButton .uiButton:focus {
-		outline: 1px solid #005290;
-	}
-</style>
-
-<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
-<script type='text/javascript'>
-	var initESW = function(gslbBaseURL) {
-		embedded_svc.settings.displayHelpButton = true; //Or false
-		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
-
-		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
-		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
-
-		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
-		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
-
-		// Settings for Field Service
-
-		embedded_svc.settings.enabledFeatures = ['FieldService'];
-		embedded_svc.settings.entryFeature = 'FieldService';
-
-		embedded_svc.settings.useCustomAuthentication = false;
-		embedded_svc.settings.loginClientId = '';
-		embedded_svc.settings.loginRedirectURL = '';
-		embedded_svc.settings.loginTargetQuerySelector = '';
-		embedded_svc.settings.authenticationStartLabel = '';
-
-		embedded_svc.init(
-			'https://youhktech.my.salesforce.com',
-			'https://youhktech.force.com/appointments',
-			gslbBaseURL,
-			'00D7Q000007avhB',
-			'Embedded_Appointment',
-			{
-				
-			}
-		);
-	};
-
-	if (!window.embedded_svc) {
-		var s = document.createElement('script');
-		s.setAttribute('src', 'https://youhktech.my.salesforce.com/embeddedservice/5.0/esw.min.js');
-		s.onload = function() {
-			initESW(null);
-		};
-		document.body.appendChild(s);
-	} else {
-		initESW('https://service.force.com');
-	}
 </script>
 </body>
     
